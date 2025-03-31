@@ -1,0 +1,17 @@
+/* login-failed.component.scss */
+.login-failed-card {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  mat-card-header {
+    background-color: #f44336; /* Rojo para error */
+    color: white;
+  }
+  
+  mat-card-title {
+    font-weight: bold;
+  }
+  
