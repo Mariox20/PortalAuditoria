@@ -166,30 +166,6 @@ app.get('/pais', (req, res) => {
     });
 });
 
-//proyecto endpoint
-app.get('/proyectos/:PaisID', (req, res) => {
-    const { PaisID } = req.params;
-
-    const sql = `
-        SELECT p.ProyectoID, p.NombreProyecto, p.FechaInicio, p.FechaFin, e.desc AS Estado
-        FROM proyectos p
-        JOIN sociedades s ON p.SociedadID = s.SociedadID
-        JOIN paises pa ON s.PaisID = pa.PaisID
-        JOIN estados e ON p.idEstado = e.idEstado
-        WHERE pa.PaisID = ?;
-    `;
-
-    db.query(sql, [PaisID], (err, results) => {
-        if (err) {
-            console.error('Error al obtener proyectos:', err);
-            return res.status(500).json({ error: 'Error al obtener proyectos' });
-        }
-        res.json(results || []);
-    });
-});
-
-
-
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
